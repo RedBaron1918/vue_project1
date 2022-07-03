@@ -1,6 +1,7 @@
 <template>
 <div class="container">
   <Header title="Task Tracker"/>
+  <Tasks :tasks="tasks"/>
 </div>
 
 </template>
@@ -9,8 +10,36 @@
 
 <script>
 import Header from './components/Header.vue'
+import Tasks from './components/Tasks.vue'
 export default {
-  components:{Header}
+  components:{Header, Tasks},
+  data(){
+    return{
+      tasks:[]
+    }
+  },
+  created(){
+    this.tasks = [
+      {
+        id:1,
+        text:'go meet the boyz',
+        day:'Jun 3rd at 5pm',
+        reminder: true
+      },
+      {
+        id:2,
+        text:'check if crypro is still dying',
+        day:'everyday',
+        reminder: true
+      },
+      {
+        id:3,
+        text:'go and cry',
+        day:'Jun 5th at 9pm',
+        reminder: false
+      }
+    ]
+  }
   
 }
 </script>
