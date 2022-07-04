@@ -1,6 +1,6 @@
 <template>
-<div class="task">
-     <h3>{{task.text}} <i class="fas fa-times"></i></h3>
+<div @click="$emit('toggle-click',task.id)" :class="[task.reminder ? 'reminder' : '','task']">
+     <h3>{{task.text}} <i @click="DeleteTask(task.id)" class="fas fa-times"></i></h3>
      <p>{{task.day}}</p>
 </div>
  
@@ -8,7 +8,12 @@
 
 <script>
 export default {
-props:['task']
+props:['task'],
+methods:{
+  DeleteTask(id){
+    this.$emit('delete-task',id)
+  }
+}
 }
 </script>
 
