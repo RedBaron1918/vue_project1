@@ -1,7 +1,7 @@
 <template>
   <header>
    <h1>{{title}}</h1>
-   <Button @show-task="$emit('show-task')" class="btn" text="add task" color="green"/>
+   <Button @btn-click="$emit('btn-click')" class="btn" :text="showAddTask ? 'close' : 'add Task'" :color="showAddTask ? 'red' : 'green'"/>
    
   </header>
 </template>
@@ -15,7 +15,8 @@ props:
     title:{
         type:String,
         required:true
-    }
+    },
+    showAddTask:Boolean
 },
 
 }

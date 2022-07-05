@@ -10,7 +10,7 @@ props:{
 },
 methods:{
     OnClick(){
-        this.$emit('show-task')
+        this.$emit('btn-click')
     }
 }
 }
