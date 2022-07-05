@@ -10,7 +10,7 @@
       "id": "2",
       "text": "check if crypro is still dying",
       "day": "everyday",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": "3",
@@ -29,6 +29,12 @@
       "day": "BLIN",
       "reminder": false,
       "id": "0jNLR8Y"
+    },
+    {
+      "text": "turme routers sheidzleba gadavcet propi",
+      "day": "2 saati movundi am debilobis gaketebas da vnanob",
+      "reminder": true,
+      "id": "mRUt7S-"
     }
   ]
 }
