@@ -38,32 +38,32 @@ export default {
       this.tasks = this.tasks.map((task) => task.id === id
        ? {...task,reminder:!task.reminder} : task)
     },
-    addTask(e){
-      this.tasks = [...this.tasks,e]
+    async addTask(e){
+      const res = await fetch('api/tasks',{
+        method:'POST',
+        headers:{
+          'Content-type' :  'application/json',
+        },
+        body: JSON.stringify(e)
+      })
+      const data = await res.json()
+      this.tasks = [...this.tasks,data]
+    },
+    async Tasks(){
+      const res = await fetch('api/tasks')
+      const data = await res.json()
+      return data
+    },
+    async singleTask(id){
+      const res = await fetch(`api/tasks/${id}`)
+      const data = await res.json()
+      return data
     }
   },
-  created(){
-    this.tasks = [
-      {
-        id:1,
-        text:'go meet the boyz',
-        day:'Jun 3rd at 5pm',
-        reminder: true
-      },
-      {
-        id:2,
-        text:'check if crypro is still dying',
-        day:'everyday',
-        reminder: true
-      },
-      {
-        id:3,
-        text:'go and cry',
-        day:'Jun 5th at 9pm',
-        reminder: false
-      }
-    ]
-  }
+  async created(){
+    this.tasks = await this.Tasks()
+    
+    }
   
 }
 </script>
