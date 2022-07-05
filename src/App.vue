@@ -27,16 +27,36 @@ export default {
     }
   },
   methods:{
-    toggleTask(){
+     toggleTask(){
+      
+
       this.showTaskadd = !this.showTaskadd
     },
 
-    DeleteTask(id){
-      this.tasks = this.tasks.filter((task)=> task.id !== id)
+   async DeleteTask(id){
+      const res = await fetch(`api/tasks/${id}`,{
+        method:'DELETE'
+      })
+      res.status === 200 ? ( this.tasks = this.tasks.filter((task)=> task.id !== id)): alert('i did something dumb i guess')
+     
     },
-    ToggleClick(id){
+   async ToggleClick(id){
+      const toggling = await this.singleTask(id)
+      const taskupt = {...toggling, reminder: !toggling.reminder} 
+
+      const res = await fetch(`api/tasks/${id}`,{
+        method:'PUT',
+        headers:{
+          'Content-type' : 'application/json',
+        },
+        body: JSON.stringify(taskupt)
+
+      })
+      const data = await res.json()
+
+
       this.tasks = this.tasks.map((task) => task.id === id
-       ? {...task,reminder:!task.reminder} : task)
+       ? {...task,reminder: data.reminder} : task)
     },
     async addTask(e){
       const res = await fetch('api/tasks',{

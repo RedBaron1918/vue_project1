@@ -16,12 +16,12 @@
       "id": "3",
       "text": "go and cry",
       "day": "everytime crypto dies",
-      "reminder": false
+      "reminder": true
     },
     {
       "text": "testing if this works",
       "day": "i hope it does",
-      "reminder": true,
+      "reminder": false,
       "id": "66p_Z7w"
     },
     {
